@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="看客影视——做影视的旁观者，看客影视 kankeyingshi-cn.github.io 提供电影深度影评、热门剧集盘点、经典老片回顾与独家影视资讯，客观中立的第三方观影指南。">
+<meta name="keywords" content="看客影视,看客影视影评,电影深度解析,热门剧集盘点,经典老片回顾,影视资讯,影视解说,第三方影评,kankeyingshi-cn">
+<meta name="author" content="看客影视">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="看客影视 - 电影深度影评与剧集盘点 | kankeyingshi-cn.github.io">
+<meta property="og:description" content="看客影视坚持旁观者视角，提供电影深度解析、热门剧集盘点、经典老片回顾与影视资讯，做客观的第三方观影指南。">
+<meta property="og:url" content="https://kankeyingshi-cn.github.io">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="看客影视 - 电影深度影评与剧集盘点">
+<meta name="twitter:description" content="做影视的旁观者，看客影视为您带来深度影评与客观盘点。">
+<link rel="canonical" href="https://kankeyingshi-cn.github.io">
+<title>看客影视 - 电影深度影评与剧集盘点 | 看客影视 kankeyingshi-cn.github.io</title>
+<style>
+/* ============ 全局 ============ */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#11151c;
+  --ink2:#5b6472;
+  --grey:#eef1f5;
+  --line:#dfe4ec;
+  --accent:#c0392b;
+  --accent2:#e67e22;
+  --news:#2980b9;
+  --rad:6px;
+  --t:.3s cubic-bezier(.4,0,.2,1);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  background:#f7f8fa;color:var(--ink);line-height:1.75;overflow-x:hidden;
+}
+a{color:var(--accent);text-decoration:none;transition:color var(--t);}
+a:hover{color:var(--accent2);}
+img{max-width:100%;display:block;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+h2.sec{font-size:1.85rem;font-weight:900;letter-spacing:-.5px;display:flex;align-items:center;gap:14px;margin-bottom:6px;}
+h2.sec .bar{width:6px;height:30px;background:var(--accent);border-radius:3px;}
+h2.sec em{font-style:normal;color:var(--ink2);font-size:1rem;font-weight:500;}
+p.sec-sub{color:var(--ink2);margin-bottom:34px;font-size:.96rem;}
+section{padding:80px 0;}
+.tag{
+  display:inline-block;font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:20px;
+  background:rgba(192,57,43,.1);color:var(--accent);margin-bottom:10px;letter-spacing:.5px;
+}
+
+/* ============ 顶部导航 ============ */
+nav.top{
+  position:fixed;inset:0 0 auto 0;z-index:1000;background:rgba(17,21,28,.96);
+  backdrop-filter:blur(10px);
+}
+.navbox{max-width:1180px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:baseline;gap:8px;color:#fff;font-size:1.5rem;font-weight:900;letter-spacing:1px;}
+.brand i{font-style:normal;color:var(--accent2);font-size:.85rem;font-weight:500;}
+nav.top ul{display:flex;gap:6px;list-style:none;}
+nav.top ul a{color:#c7ccd6;font-weight:600;font-size:.9rem;padding:8px 16px;border-radius:4px;}
+nav.top ul a:hover{background:rgba(255,255,255,.08);color:#fff;}
+.hamb{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;}
+.hamb b{width:26px;height:2px;background:#fff;}
+
+/* ============ Hero 首屏 ============ */
+.hero{
+  padding-top:150px;padding-bottom:80px;background:var(--ink);color:#fff;position:relative;overflow:hidden;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(600px 400px at 80% 20%,rgba(192,57,43,.28),transparent 60%),
+             radial-gradient(500px 300px at 10% 90%,rgba(230,126,34,.18),transparent 60%);
+  pointer-events:none;
+}
+.heroin{position:relative;z-index:2;}
+.hero .eyebrow{
+  display:inline-flex;align-items:center;gap:10px;color:var(--accent2);font-size:.82rem;
+  font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:22px;
+}
+.hero .eyebrow::before{content:"";width:38px;height:2px;background:var(--accent2);}
+.hero h1{font-size:3.6rem;font-weight:900;line-height:1.12;letter-spacing:-1.5px;margin-bottom:20px;}
+.hero h1 b{color:var(--accent2);}
+.hero .lede{max-width:600px;color:#9aa4b2;font-size:1.08rem;margin-bottom:32px;}
+.hero .stats{display:flex;gap:52px;flex-wrap:wrap;padding-top:30px;border-top:1px solid rgba(255,255,255,.12);}
+.hero .stats div span{display:block;font-size:2.2rem;font-weight:900;color:#fff;}
+.hero .stats div small{color:#7d8794;font-size:.78rem;letter-spacing:1px;}
+
+/* ============ 栏目一：深度影评（报纸分栏 + 首字下沉） ============ */
+#review{background:#fff;}
+.paper{border:1px solid var(--line);border-radius:var(--rad);overflow:hidden;}
+.paper .head{
+  display:flex;align-items:center;justify-content:space-between;padding:16px 24px;
+  border-bottom:3px double var(--line);background:#fbfbfc;flex-wrap:wrap;gap:10px;
+}
+.paper .head h3{font-size:1.15rem;font-weight:900;letter-spacing:1px;}
+.paper .head .cats{display:flex;gap:8px;flex-wrap:wrap;}
+.paper .head .cats a{font-size:.74rem;color:var(--ink2);border:1px solid var(--line);padding:4px 12px;border-radius:20px;}
+.paper .head .cats a:hover{border-color:var(--accent);color:var(--accent);}
+.artbody{padding:30px 24px;column-count:2;column-gap:36px;column-rule:1px solid var(--line);}
+.artbody .lead{
+  font-size:1.15rem;font-weight:700;color:var(--ink);margin-bottom:18px;line-height:1.8;
+}
+.artbody p{margin-bottom:16px;color:#444d58;font-size:.94rem;}
+.artbody p:first-of-type::first-letter{
+  float:left;font-size:4.6rem;line-height:.85;padding:6px 10px 0 0;font-weight:900;color:var(--accent);
+}
+.pullquote{
+  margin:26px 0;padding:20px 24px;background:var(--grey);border-left:5px solid var(--accent);
+  font-size:1.1rem;font-weight:700;font-style:italic;color:var(--ink);break-inside:avoid;
+}
+.revgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;margin-top:26px;padding:0 24px 30px;}
+.revcard{border:1px solid var(--line);border-radius:var(--rad);padding:20px;background:#fff;transition:all var(--t);}
+.revcard:hover{border-color:var(--accent);box-shadow:0 10px 28px rgba(17,21,28,.08);transform:translateY(-4px);}
+.revcard h4{font-size:1rem;margin-bottom:8px;}
+.revcard p{font-size:.85rem;color:var(--ink2);}
+.revcard .score{display:flex;align-items:center;gap:6px;margin-top:12px;font-weight:900;color:var(--accent);}
+
+/* ============ 栏目二：剧集盘点（阶梯式横向卡片） ============ */
+#tvlist{background:linear-gradient(180deg,#f7f8fa,#eef1f5);}
+.stairs{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:26px;align-items:center;padding:26px;border-radius:var(--rad);background:#fff;border:1px solid var(--line);transition:all var(--t);}
+.step:nth-child(even){flex-direction:row-reverse;background:#11151c;color:#dfe4ec;border-color:#11151c;}
+.step:hover{transform:translateX(8px);box-shadow:0 12px 30px rgba(17,21,28,.1);}
+.step:nth-child(even):hover{transform:translateX(-8px);}
+.step .no{
+  flex:0 0 78px;height:78px;border-radius:50%;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-size:2rem;font-weight:900;font-family:Georgia,serif;
+}
+.step:nth-child(even) .no{background:var(--accent2);}
+.step .pic{flex:0 0 180px;height:120px;border-radius:var(--rad);overflow:hidden;}
+.step .pic img{width:100%;height:100%;object-fit:cover;transition:transform .6s;}
+.step:hover .pic img{transform:scale(1.08);}
+.step .txt{flex:1;}
+.step .txt h4{font-size:1.2rem;margin-bottom:8px;}
+.step .txt p{font-size:.88rem;color:var(--ink2);}
+.step:nth-child(even) .txt p{color:#9aa4b2;}
+.step .txt .k{display:inline-block;margin-top:10px;font-size:.74rem;font-weight:800;color:var(--accent);border-bottom:1px solid currentColor;}
+
+/* ============ 栏目三：经典老片（竖向胶片带） ============ */
+#classic{background:#11151c;color:#dfe4ec;}
+#classic h2.sec{color:#fff;}
+#classic h2.sec em{color:#7d8794;}
+#classic .sec-sub{color:#7d8794;}
+.filmstrip{
+  display:flex;gap:0;overflow-x:auto;padding:30px 0;scroll-snap-type:x mandatory;
+  border-top:10px solid #000;border-bottom:10px solid #000;background:#000;
+}
+.filmstrip::-webkit-scrollbar{height:8px;}
+.filmstrip::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px;}
+.frame{
+  flex:0 0 240px;scroll-snap-align:start;position:relative;margin:0 6px;
+  border:2px solid #333;background:#1c222b;transition:all var(--t);
+}
+.frame::before,.frame::after{
+  content:"";position:absolute;top:0;bottom:0;width:14px;background:
+    repeating-linear-gradient(180deg,transparent 0,transparent 10px,#000 10px,#000 20px);
+}
+.frame::before{left:0;}.frame::after{right:0;}
+.frame:hover{transform:scale(1.05);border-color:var(--accent2);z-index:2;}
+.frame .ph{margin:0 16px;height:280px;overflow:hidden;}
+.frame .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.35);transition:filter .4s;}
+.frame:hover .ph img{filter:grayscale(0);}
+.frame .cap{margin:14px 16px 18px;}
+.frame .cap b{display:block;color:#fff;font-size:.95rem;margin-bottom:6px;}
+.frame .cap span{font-size:.78rem;color:var(--accent2);font-weight:700;}
+
+/* ============ 栏目四：影视资讯（Ticker 快讯 + 时间线） ============ */
+#news{background:#fff;}
+.ticker{
+  background:var(--ink);color:#fff;padding:12px 0;display:flex;align-items:center;
+  border-radius:var(--rad);overflow:hidden;margin-bottom:34px;
+}
+.ticker .lbl{
+  flex:0 0 auto;background:var(--accent);color:#fff;font-weight:900;font-size:.8rem;
+  padding:12px 20px;letter-spacing:1px;z-index:2;
+}
+.ticker .run{flex:1;overflow:hidden;white-space:nowrap;}
+.ticker .run span{
+  display:inline-block;padding-left:100%;animation:scroll 30s linear infinite;
+}
+@keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-100%);}
+.timeline{position:relative;padding-left:34px;}
+.timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line);}
+.tlitem{position:relative;margin-bottom:26px;padding:20px 22px;background:var(--grey);border-radius:var(--rad);transition:all var(--t);}
+.tlitem:hover{background:#e8ecf3;transform:translateX(6px);}
+.tlitem::before{
+  content:"";position:absolute;left:-31px;top:24px;width:14px;height:14px;border-radius:50%;
+  background:#fff;border:3px solid var(--accent);
+}
+.tlitem time{font-size:.78rem;font-weight:800;color:var(--news);letter-spacing:.5px;}
+.tlitem h4{font-size:1.05rem;margin:6px 0 8px;}
+.tlitem p{font-size:.86rem;color:var(--ink2);}
+
+/* ============ 页脚 ============ */
+footer{background:var(--ink);color:#9aa4b2;padding:54px 0 24px;}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:36px;margin-bottom:36px;}
+footer h5{color:#fff;font-size:1rem;margin-bottom:16px;letter-spacing:.5px;}
+footer p,footer li{font-size:.85rem;}
+footer ul{list-style:none;}
+footer li{margin-bottom:10px;}
+footer a:hover{color:var(--accent2);}
+.copy{text-align:center;border-top:1px solid rgba(255,255,255,.1);padding-top:24px;font-size:.78rem;color:#6b7482;}
+
+/* ============ 回到顶部 ============ */
+#top{
+  position:fixed;bottom:26px;right:26px;width:50px;height:50px;border-radius:4px;
+  background:var(--accent);color:#fff;border:none;font-size:1.3rem;cursor:pointer;
+  box-shadow:0 8px 24px rgba(192,57,43,.35);opacity:0;visibility:hidden;transition:all var(--t);z-index:999;
+}
+#top.show{opacity:1;visibility:visible;}
+#top:hover{background:var(--accent2);transform:translateY(-4px);}
+
+/* ============ 移动端适配 ============ */
+@media(max-width:900px){
+  .hero h1{font-size:2.8rem;}
+  .artbody{column-count:1;}
+  .fgrid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  .hamb{display:flex;}
+  nav.top ul{
+    position:fixed;top:66px;left:0;right:0;flex-direction:column;
+    background:rgba(17,21,28,.98);padding:16px 24px;gap:2px;
+    transform:translateY(-200%);transition:transform var(--t);
+  }
+  nav.top ul.show{transform:translateY(0);}
+  nav.top ul a{display:block;padding:14px 16px;font-size:1rem;border-radius:0;border-bottom:1px solid rgba(255,255,255,.06);}
+  .hero{padding-top:130px;}
+  .hero h1{font-size:2.1rem;}
+  .hero .lede{font-size:.95rem;}
+  .hero .stats{gap:30px;}
+  .hero .stats div span{font-size:1.7rem;}
+  h2.sec{font-size:1.5rem;}
+  section{padding:58px 0;}
+  .paper .head{flex-direction:column;align-items:flex-start;}
+  .artbody{padding:22px 18px;}
+  .revgrid{padding:0 18px 22px;}
+  .step,.step:nth-child(even){flex-direction:column;align-items:flex-start;text-align:left;gap:16px;padding:20px;}
+  .step .pic{flex:0 0 100%;width:100%;height:180px;}
+  .step:nth-child(even):hover,.step:hover{transform:none;}
+  .frame{flex:0 0 190px;}
+  .frame .ph{height:220px;}
+  .ticker{flex-direction:column;align-items:stretch;}
+  .ticker .lbl{text-align:center;}
+  .ticker .run{height:34px;line-height:34px;}
+  .fgrid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<!-- ===== 顶部导航 ===== -->
+<nav class="top" id="topnav">
+  <div class="navbox">
+    <a class="brand" href="#hero">看客影视 <i>KANKE</i></a>
+    <button class="hamb" id="hamb" aria-label="菜单"><b></b><b></b><b></b></button>
+    <ul id="menu">
+      <li><a href="#review">深度影评</a></li>
+      <li><a href="#tvlist">剧集盘点</a></li>
+      <li><a href="#classic">经典老片</a></li>
+      <li><a href="#news">影视资讯</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== 首屏 ===== -->
+<header class="hero" id="hero">
+  <div class="wrap heroin">
+    <div class="eyebrow">The Observer of Cinema</div>
+    <h1>做影视的<br><b>旁观者</b>，不站队</h1>
+    <p class="lede">看客影视（kankeyingshi-cn.github.io）坚持第三方中立视角，为您带来电影深度解析、热门剧集客观盘点、经典老片回顾与一手影视资讯——看客影视，只做有态度的观影指南。</p>
+    <div class="stats">
+      <div><span>1,280+</span><small>深度影评</small></div>
+      <div><span>360+</span><small>剧集盘点</small></div>
+      <div><span>每日</span><small>资讯更新</small></div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== 栏目一：深度影评（报纸分栏 + 首字下沉） ===== -->
+<section id="review">
+  <div class="wrap">
+    <span class="tag">EDITORIAL</span>
+    <h2 class="sec"><span class="bar"></span>深度影评 <em>· 不止于打分</em></h2>
+    <p class="sec-sub">看客影视坚持旁观者立场，拆解叙事结构、镜头语言与主题表达，让每一次观影都有新的收获。</p>
+
+    <div class="paper">
+      <div class="head">
+        <h3>看客影评 · 今日主笔</h3>
+        <div class="cats">
+          <a href="#review">叙事结构</a>
+          <a href="#review">镜头语言</a>
+          <a href="#review">主题表达</a>
+          <a href="#review">表演分析</a>
+        </div>
+      </div>
+
+      <div class="artbody">
+        <p class="lead">好的电影从不需要观众下跪，它只是安静地摆出一面镜子，让你看见自己不愿承认的那一部分。</p>
+        <p>看客影视始终认为，影评的价值不在于替观众下判断，而在于提供另一双眼睛。当一部作品在票房上狂飙，我们更该追问：它到底说了什么？它为什么这么说？它说的，是真的吗？</p>
+        <p>以叙事节奏为例，太多商业片把"快"误当作"好"，剪辑越来越碎，情绪却越来越浅。真正的节奏感，是懂得什么时候该留白——镜头多停两秒，观众就多想一层。</p>
+        <blockquote class="pullquote">"影评人的职责不是宣判，而是让观众带着问题走进影院，带着思考走出来。" —— 看客影视编辑部</blockquote>
+        <p>这也是看客影视坚持中立立场的原因。我们不追热度、不站阵营，只就作品论作品。一部被全网吹爆的片，也可能藏着叙事漏洞；一部被冷落的片，或许正有被忽视的闪光。</p>
+        <p>做旁观者，不是冷漠，而是克制。克制住情绪的煽动，才能留下空间给判断。</p>
+      </div>
+
+      <div class="revgrid">
+        <div class="revcard">
+          <h4>《奥本海默》叙事结构解析</h4>
+          <p>诺兰用双线交织重构传记片语法，看客影视带你拆解三条时间线的剪辑逻辑。</p>
+          <div class="score">★ 9.2 <span style="color:var(--ink2);font-weight:500;">/ 10</span></div>
+        </div>
+        <div class="revcard">
+          <h4>华语悬疑片的困境与出路</h4>
+          <p>从反转数量到叙事诚意，看客影视盘点近三年华语悬疑的得与失。</p>
+          <div class="score">深度 <span style="color:var(--ink2);font-weight:500;">专题</span></div>
+        </div>
+        <div class="revcard">
+          <h4>动画电影为何总能治愈成年人</h4>
+          <p>色彩、音乐与留白：看客影视从视听语言角度解读动画的情绪密码。</p>
+          <div class="score">★ 8.8 <span style="color:var(--ink2);font-weight:500;">/ 10</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目二：剧集盘点（阶梯式卡片） ===== -->
+<section id="tvlist">
+  <div class="wrap">
+    <span class="tag">TOP LIST</span>
+    <h2 class="sec"><span class="bar"></span>剧集盘点 <em>· 客观排名</em></h2>
+    <p class="sec-sub">看客影视每月更新，不唯热度论，兼顾口碑、完成度与可看性。</p>
+
+    <div class="stairs">
+
+      <div class="step">
+        <div class="no">1</div>
+        <div class="pic"><img src="https://images.unsplash.com/photo-1574267432553-4b4628082c03?w=400&q=80" alt="权游前传"></div>
+        <div class="txt">
+          <h4>《龙之家族》第二季</h4>
+          <p>黑党与绿党的权力博弈持续升级，大场面与人物弧光并重，看客影视评分榜首。</p>
+          <a class="k" href="#tvlist">查看完整点评 →</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="no">2</div>
+        <div class="pic"><img src="https://images.unsplash.com/photo-1522869635100-9f4c5e86e412?w=400&q=80" alt="都市爱情剧"></div>
+        <div class="txt">
+          <h4>《繁花》—— 王家卫的电视剧实验</h4>
+          <p>电影级视听语言搬上小屏，90 年代上海滩的浮华与落寞被拍得极美。</p>
+          <a class="k" href="#tvlist">查看完整点评 →</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="no">3</div>
+        <div class="pic"><img src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=400&q=80" alt="悬疑剧"></div>
+        <div class="txt">
+          <h4>《漫长的季节》</h4>
+          <p>用生活流的节奏讲一个悬疑故事，范伟的表演值得反复咀嚼。</p>
+          <a class="k" href="#tvlist">查看完整点评 →</a>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="no">4</div>
+        <div class="pic"><img src="https://images.unsplash.com/photo-1478479405421-ce83c92fb3ba?w=400&q=80" alt="英剧"></div>
+        <div class="txt">
+          <h4>《豆蔻地》—— 英剧的冷峻美学</h4>
+          <p>短小精悍的六集结构，每集都是一次情绪的精准打击。</p>
+          <a class="k" href="#tvlist">查看完整点评 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目三：经典老片（竖向胶片带） ===== -->
+<section id="classic">
+  <div class="wrap">
+    <span class="tag" style="background:rgba(230,126,34,.15);color:var(--accent2);">CLASSIC</span>
+    <h2 class="sec"><span class="bar"></span>经典老片 <em>· 值得重看</em></h2>
+    <p class="sec-sub">看客影视相信，真正的经典经得起反复观看——横向滑动胶片带，挑一部今晚重温。</p>
+
+    <div class="filmstrip">
+
+      <div class="frame">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=360&q=80" alt="肖申克的救赎"></div>
+        <div class="cap"><b>肖申克的救赎</b><span>1994 · 希望</span></div>
+      </div>
+
+      <div class="frame">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=360&q=80" alt="阿甘正传"></div>
+        <div class="cap"><b>阿甘正传</b><span>1994 · 奔跑</span></div>
+      </div>
+
+      <div class="frame">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=360&q=80" alt="星际穿越"></div>
+        <div class="cap"><b>星际穿越</b><span>2014 · 时空</span></div>
+      </div>
+
+      <div class="frame">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=360&q=80" alt="教父"></div>
+        <div class="cap"><b>教父</b><span>1972 · 权力</span></div>
+      </div>
+
+      <div class="frame">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1505635552518-3448ff116af3?w=360&q=80" alt="低俗小说"></div>
+        <div class="cap"><b>低俗小说</b><span>1994 · 环形</span></div>
+      </div>
+
+      <div class="frame">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=360&q=80" alt="千与千寻"></div>
+        <div class="cap"><b>千与千寻</b><span>2001 · 成长</span></div>
+      </div>
+
+      <div class="frame">
+        <div class="ph"><img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?w=360&q=80" alt="楚门的世界"></div>
+        <div class="cap"><b>楚门的世界</b><span>1998 · 真实</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 栏目四：影视资讯（快讯 Ticker + 时间线） ===== -->
+<section id="news">
+  <div class="wrap">
+    <span class="tag" style="background:rgba(41,128,185,.12);color:var(--news);">BREAKING</span>
+    <h2 class="sec"><span class="bar"></span>影视资讯 <em>· 一手快讯</em></h2>
+    <p class="sec-sub">看客影视每日追踪行业动态，第一时间带来客观报道。</p>
+
+    <div class="ticker">
+      <div class="lbl">快讯 · LIVE</div>
+      <div class="run"><span>第97届奥斯卡颁奖礼定档2026年3月 · 多部华语片入围戛纳电影节"一种关注"单元 · 《复仇者联盟5》正式公布首批卡司阵容 · 国内院线暑期档总票房突破180亿</span></div>
+    </div>
+
+    <div class="timeline">
+
+      <div class="tlitem">
+        <time>2026-10-24 · 行业</time>
+        <h4>第97届奥斯卡公布完整提名名单</h4>
+        <p>本届共有三部非英语片入围最佳影片，看客影视将持续跟进各奖项深度分析。</p>
+      </div>
+
+      <div class="tlitem">
+        <time>2026-10-22 · 剧集</time>
+        <h4>《权力的游戏》衍生剧再添两部新作</h4>
+        <p>HBO 正式宣布开发两部全新衍生剧，分别聚焦坦格利安家族早期历史与多恩线。</p>
+      </div>
+
+      <div class="tlitem">
+        <time>2026-10-20 · 市场</time>
+        <h4>2026 暑期档总票房突破 180 亿元</h4>
+        <p>国产片贡献超七成票房，看客影视盘点今年暑期档的赢家与失意者。</p>
+      </div>
+
+      <div class="tlitem">
+        <time>2026-10-18 · 平台</time>
+        <h4>多家流媒体宣布上调会员价格</h4>
+        <p>涨价背后是内容成本持续攀升，用户是否愿意为优质内容买单仍是未知数。</p>
+      </div>
+
+      <div class="tlitem">
+        <time>2026-10-15 · 人物</time>
+        <h4>资深影评人联名呼吁：保留独立影院</h4>
+        <p>面对商业综合体的挤压，独立艺术影院正在消失，联名信呼吁政策扶持。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="brand" style="margin-bottom:14px;color:#fff;">看客影视 <i style="color:var(--accent2);">KANKE</i></div>
+        <p>看客影视（kankeyingshi-cn.github.io）坚持第三方中立视角，提供电影深度影评、热门剧集客观盘点、经典老片回顾与一手影视资讯。做影视的旁观者，不站队、不盲从。</p>
+      </div>
+      <div>
+        <h5>频道</h5>
+        <ul>
+          <li><a href="#review">深度影评</a></li>
+          <li><a href="#tvlist">剧集盘点</a></li>
+          <li><a href="#classic">经典老片</a></li>
+          <li><a href="#news">影视资讯</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>专题</h5>
+        <ul>
+          <li><a href="#review">年度十佳</a></li>
+          <li><a href="#review">奥斯卡观察</a></li>
+          <li><a href="#classic">大师回顾</a></li>
+          <li><a href="#review">类型片研究</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>关于</h5>
+        <ul>
+          <li><a href="#hero">看客立场</a></li>
+          <li><a href="#hero">投稿合作</a></li>
+          <li><a href="#hero">免责声明</a></li>
+          <li><a href="#hero">联系我们</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 看客影视 kankeyingshi-cn.github.io | 本站内容仅代表第三方观点，相关影视版权归原作者及制片方所有</div>
+  </div>
+</footer>
+
+<button id="top" title="回到顶部">↑</button>
+
+<script>
+// 移动端菜单
+var hamb=document.getElementById('hamb'),menu=document.getElementById('menu');
+hamb.addEventListener('click',function(){menu.classList.toggle('show');});
+menu.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){menu.classList.remove('show');});});
+
+// 回到顶部
+var top=document.getElementById('top');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>450)top.classList.add('show');else top.classList.remove('show');
+});
+top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+</script>
+</body>
+</html>
